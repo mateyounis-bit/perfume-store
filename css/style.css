@@ -1,0 +1,471 @@
+:root {
+    --primary: #111;
+    --gold: #b38b45;
+    --gray-bg: #f8f8f8;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;;
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.collection {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+/* Hero */
+.hero-banner {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=2000') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Features Bar */
+.features-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 5%;
+    background: var(--gray-bg);
+    text-align: center;
+}
+
+.feature-item strong {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.feature-item span {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Product Grid */
+.shop-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    position: relative;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.product-image {
+    aspect-ratio: 3/4;
+    background: #fdfdfd;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.add-to-cart {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.product-card:hover .add-to-cart {
+    bottom: 0;
+}
+
+.product-info {
+    padding: 15px 0;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* Cart Drawer */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-drawer.active {
+    right: 0;
+}
+
+.cart-items {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-item-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-item-row img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Modal */
+.checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.checkout-content {
+    background: white;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.pay-btn {
+    background: #111;
+    color: white;
+    padding: 15px;
+    border: none;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1500;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #f0f0f0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.quantity-controls button {
+    background: none;
+    border: 1px solid var(--border-color);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.quantity-controls button:hover {
+    background-color: var(--gold);
+    color: white;
+    border-color: var(--gold);
+}
+
+.quantity-controls span {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Style for the 'X' remove button */
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.remove-item-btn:hover {
+    color: #e74c3c;
+}
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    /* 1. Fix: Ensure the image container allows the button to be seen and clicked */
+    .product-image {
+        overflow: visible; /* Changed from hidden to visible */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 2. Fix: Style the button for easy tapping on mobile */
+    .add-to-cart {
+        position: relative; /* Changed from absolute/static to relative */
+        bottom: 0;
+        opacity: 1;
+        visibility: visible;
+        margin-top: 10px;
+        padding: 12px;
+        font-size: 12px;
+        z-index: 10; /* Ensures it sits above the image */
+    }
+
+    /* 3. Fix: Prevent hover logic from breaking the mobile layout */
+    .product-card:hover .add-to-cart {
+        bottom: 0;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
+    }
+
+    .features-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Full width cart for mobile */
+    .cart-drawer {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* Responsive Adjustments */
+
+/* Mobile Navigation & Header */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+
+    /* Hero Section - adjust height for mobile */
+    .hero-banner {
+        height: 40vh;
+        padding: 0 20px;
+    }
+
+    /* Features Bar - Stack vertically */
+    .features-bar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 5%;
+    }
+
+    .feature-item {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Cart Drawer - Make it full width on small screens */
+    .cart-drawer {
+        width: 100%;
+        max-width: 100%;
+        right: -100%; /* Reset for full width slide-in */
+    }
+
+    /* Product Grid - Tighten spacing */
+    .shop-container {
+        margin: 30px auto;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    /* Force the "Add to Cart" to be visible or easier to tap on mobile */
+    .add-to-cart {
+        position: static; /* Moves it below the image permanently */
+        bottom: 0;
+        margin-top: 10px;
+        opacity: 1;
+        font-size: 10px;
+        padding: 10px;
+    }
+
+    .product-card:hover .add-to-cart {
+        bottom: auto;
+    }
+
+    /* Checkout Modal */
+    .checkout-content {
+        width: 95%;
+        padding: 25px;
+    }
+}
+
+/* Very Small Devices (320px - 400px) */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr; /* Ensures 2 columns on even tiny phones */
+        gap: 10px;
+    }
+
+    .product-info h3 {
+        font-size: 0.9rem;
+    }
+}

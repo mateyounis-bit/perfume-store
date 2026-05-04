@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>perfumes-store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">perfumes-store</div>
+        <div class="cart-icon" onclick="toggleCart()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-content" id="modal-body">
+            <h2 style="margin-bottom: 20px;">Order Confirmation</h2>
+            <div id="order-summary" style="text-align: left; background: #f9f9f9; padding: 20px; border-radius: 4px;">
+            </div>
+            <button class="pay-btn" onclick="processPayment()">Complete Payment</button>
+            <button class="cancel-btn" onclick="closeCheckout()">Cancel and Go Back</button>
+        </div>
+    </div>
+
+
+
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>perfumes-store</h1>
+            <p>Elevate your presence with our signature collection.</p>
+        </div>
+    </section>
+    
+
+    <section class="features-bar">
+        <div class="feature-item"><strong>Free Delivery</strong><span>On orders over $100</span></div>
+        <div class="feature-item"><strong>Premium Quality</strong><span>Sourced globally</span></div>
+        <div class="feature-item"><strong>24/7 Support</strong><span>Always here to help</span></div>
+    </section>
+
+    <main class="shop-container">
+        <h1 class="collection">Our Collection</h1>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/Dior Homme Intense.webp" alt="Dior Homme">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>Dior Homme Intense</h3>
+                    <p class="price">$120.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/laverne.jpeg" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>laverne</h3>
+                    <p class="price">$245.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/versace eros.jpg" alt="Miss Dior">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>Versace Eros</h3>
+                    <p class="price">$180.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/lv.avif" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>lois viton</h3>
+                    <p class="price">$120.00</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/creed.webp" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>creed</h3>
+                    <p class="price">$155.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/suvage.avif" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>Dior Sauvage</h3>
+                    <p class="price">$240.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/Miss Dior Pour Femme.webp" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>miss Dior</h3>
+                    <p class="price">$180.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="photo/blue chanel.avif" alt="Sauvage">
+                    <button class="add-to-cart">Add to Bag</button>
+                </div>
+                <div class="product-info">
+                    <h3>blue De Chanel</h3>
+                    <p class="price">$70.00</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header"
+            style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <h3>Your Bag</h3>
+            <button onclick="toggleCart()"
+                style="background:none; border:none; font-size: 24px; cursor:pointer;">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-items">
+            <p style="text-align:center; color:#999; margin-top: 50px;">Your bag is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <span>Subtotal:</span>
+                <span id="total-price">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+    <footer>
+        <p>&copy; design by matti</p>
+    </footer>
+
+  <script>
+    let total = 0;
+    let items = 0;
+    const cartContainer = document.getElementById('cart-items-container');
+    const cartCount = document.querySelector('.cart-count');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // --- Drawer Controls ---
+    function toggleCart() {
+        document.getElementById('cart-drawer').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+    }
+
+    // --- ADD TO CART LOGIC ---
+    // This connects your "Add to Bag" buttons to the new quantity system
+    document.querySelectorAll('.product-card').forEach((card, index) => {
+        card.querySelector('.add-to-cart').addEventListener('click', () => {
+            const name = card.querySelector('h3').innerText;
+            const priceText = card.querySelector('.price').innerText;
+            const price = parseFloat(priceText.replace('$', ''));
+            const img = card.querySelector('img').src;
+            const productId = 'prod-' + index; // Creates a unique ID for each product
+
+            addItem(productId, name, priceText, price, img);
+        });
+    });
+
+    function addItem(id, name, priceText, price, img) {
+        const existingItem = document.getElementById('cart-' + id);
+
+        if (existingItem) {
+            // If item is already in bag, just increase quantity
+            changeQuantity(id, 1, price);
+            return;
+        }
+
+        if (items === 0) cartContainer.innerHTML = '';
+
+        const row = document.createElement('div');
+        row.className = 'cart-item-row';
+        row.id = 'cart-' + id; 
+        row.innerHTML = `
+            <img src="${img}">
+            <div style="flex-grow: 1;">
+                <h4 style="font-size: 14px;">${name}</h4>
+                <p style="color: #b38b45;">${priceText}</p>
+                
+                <div class="quantity-controls">
+                    <button onclick="changeQuantity('${id}', -1, ${price})">-</button>
+                    <span id="qty-${id}">1</span>
+                    <button onclick="changeQuantity('${id}', 1, ${price})">+</button>
+                </div>
+            </div>
+            <button onclick="manualRemove('${id}', ${price})" class="remove-item-btn">&times;</button>
+        `;
+        cartContainer.appendChild(row);
+
+        items++;
+        total += price;
+        updateUI();
+    }
+
+    function changeQuantity(id, delta, price) {
+        const qtyElement = document.getElementById('qty-' + id);
+        let currentQty = parseInt(qtyElement.innerText);
+        let newQty = currentQty + delta;
+
+        if (newQty > 0) {
+            qtyElement.innerText = newQty;
+            total += (delta * price);
+            updateUI();
+        } else {
+            manualRemove(id, price);
+        }
+    }
+
+    function manualRemove(id, price) {
+        const itemRow = document.getElementById('cart-' + id);
+        const qty = parseInt(document.getElementById('qty-' + id).innerText);
+        
+        if (itemRow) {
+            total -= (price * qty);
+            itemRow.remove();
+            items--;
+            
+            if (items === 0) {
+                cartContainer.innerHTML = '<p style="text-align:center; color:#999; margin-top: 50px;">Your bag is empty.</p>';
+            }
+            updateUI();
+        }
+    }
+
+    function updateUI() {
+        cartCount.innerText = items;
+        totalPriceElement.innerText = "$" + Math.max(0, total).toFixed(2);
+        
+        // Feedback animation
+        const icon = document.querySelector('.cart-icon');
+        icon.style.transform = 'scale(1.2)';
+        setTimeout(() => icon.style.transform = 'scale(1)', 200);
+    }
+
+    // --- Checkout & Modal Logic ---
+    function openCheckout() {
+        if (items === 0) {
+            alert("Your bag is empty!");
+            return;
+        }
+        const summary = document.getElementById('order-summary');
+        summary.innerHTML = `
+            <p><strong>Unique Items:</strong> ${items}</p>
+            <p><strong>Total Price:</strong> ${totalPriceElement.innerText}</p>
+            <p style="font-size: 11px; color: #888; margin-top: 10px;">Payment is secure and encrypted.</p>
+        `;
+        toggleCart();
+        document.getElementById('checkout-modal').style.display = 'flex';
+    }
+
+    function closeCheckout() {
+        document.getElementById('checkout-modal').style.display = 'none';
+    }
+
+    function processPayment() {
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+            <div style="font-size: 50px; margin-bottom: 10px;">✨</div>
+            <h2>Thank You!</h2>
+            <p>Your order has been placed successfully.</p>
+            <button class="pay-btn" onclick="location.reload()">Back to Store</button>
+        `;
+    }
+</script>
+</body>
+
+</html>
